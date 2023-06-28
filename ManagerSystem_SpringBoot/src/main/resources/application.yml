@@ -1,0 +1,29 @@
+
+spring:
+  mvc:
+    view:
+      prefix: classpath:/templates/
+      suffix: .html
+      static-path-pattern: /static/**  #配置静态路径
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    cache: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/SpringBoot?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: admin
+    driver-class-name: com.mysql.jdbc.Driver
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+  freemarker:
+    cache: false    #页面不加载缓存，修改即时生效
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true  # 下划线驼峰配置
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl   # 打印SQL语句
+    type-aliases-package: com.mapper
+    mapper-locations: classpath:com/mapper/*.xml
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新增用户</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div style="width:600px;height:100%;margin:auto;text-align: center">
+    <h2>新增用户</h2>
+    <br>
+    <br>
+    <form action="/add" method="post">
+        用 户：<input  type="text" th:value="${username}" name="username"><br>
+        <br>
+        密 码：<input  type="text" th:value="${password}" name="password"><br>
+        <br>
+        <br>
+        <button >保 存</button>
+    </form>
+</div>
+
+</body>
+</html>

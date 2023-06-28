@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <!-- <link rel="stylesheet" type="text/css" th:href="@{../../static/css/Login.css}" />-->
+    <script type="text/javascript" src="${ctx}/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <style type="text/css">
+        table {border-collapse: collapse; font-size: 16px; width: 20%; margin: auto}
+
+        #s1{
+            text-align: center;
+            margin: auto;
+        }
+        #s2{
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+    <script type="text/javascript">
+        function f1(){
+            //1-5个汉字
+            var regx = /^[a-zA-Z0-9]{1,5}$/;
+            var username = document.getElementById("username").value;
+            if(regx.test(username)){
+                document.getElementById("d1").style.color = "green";
+                document.getElementById("d1").innerHTML="√";
+                return true;
+            }else{
+                document.getElementById("d1").style.color = "red";
+                document.getElementById("d1").innerHTML="×";
+                return false;
+            }
+        }
+        function f2(){
+            //5-12个字母或汉字
+            var regx = /^[a-zA-Z0-9]{5,12}$/;
+            var password = document.getElementById("password").value;
+            if(regx.test(password)){
+                document.getElementById("d2").style.color = "green";
+                document.getElementById("d2").innerHTML="√";
+                return true;
+            }else{
+                document.getElementById("d2").style.color = "red";
+                document.getElementById("d2").innerHTML="×";
+                return false;
+            }
+        }
+        function subForm(){
+            if(f1()&&f2()){
+                return true;
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+
+<div style="text-align: center">
+    <span style="color: darkslategray; font-size: 30px"><h1>基于SpringBoot框架的管理系统</h1></span>
+    <br>
+    <br>
+    <br>
+    <h2>登录页面</h2>
+    <br>
+    <br>
+    <form action="/result" method="get" onsubmit="return subForm()">
+        <table>
+            <tr>
+                <td><span>用户：</span></td>
+                <td><input id="username" type="text" name="username" placeholder="请输入1-5个汉字或字母" onblur="f1()"><span id="d1"></span></td>
+            </tr>
+            <tr>
+                <td>
+                    <span>密码：</span>
+                </td>
+                <td><input id="password" type="password" name="password" placeholder="请输入5-12个字母或数字" onblur="f2()"><span id="d2"></span></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+        <input id="s1" type="submit" value="登录" style="font-size: 14px">
+    </form>
+    <br>
+    <form action="/register" method="get" >
+        <input id="s2" type="submit" value="注册" onclick="register()" style="font-size: 14px">
+    </form>
+</div>
+</body>
+</html>

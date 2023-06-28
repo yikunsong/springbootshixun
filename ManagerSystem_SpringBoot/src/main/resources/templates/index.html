@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        table {border-collapse: collapse; font-size: 14px; width: 80%; margin: auto}
+        table, th, td {border: 1px solid darkslategray;padding: 10px}
+    </style>
+</head>
+<body>
+<div style="text-align: center">
+    <span style="color: darkslategray; font-size: 30px"><h1>基于SpringBoot框架的管理系统</h1></span>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2>首页</h2>
+    <br>
+    <br>
+    <table class="list">
+        <tr>
+            <th>编号</th>
+            <th>用户</th>
+            <th>密码</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="user : ${user}">
+            <td th:text="${user.id}">0</td>
+            <td th:text="${user.username}">张三</td>
+            <td th:text="${user.password}">zhangsan</td>
+            <td>
+                <a  th:href="@{'/updatePage/'+${user.id}}" >更改</a>
+                <a  th:href="@{'/delete/'+${user.id}}" >删除</a>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button ><a href="/useradd" style="font-size: 15px">添加用户</a></button>
+</div>
+</body>
+</html>
